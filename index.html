@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今日歌曲</title>
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+audio {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+button {
+    margin: 5px 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>今日歌曲 🎵</h2>
+    <audio id="audioPlayer" controls></audio>
+    <div id="songButtons"></div>
+  </div>
+
+<script>
+// 歌曲列表
+const songs = [
+    "郭顶 - 保留.mp3",
+    "井胧 - 丢了你.mp3",
+    "棱镜 - 总有一天你会出现在我身边.mp3",
+    "江途 - 救赎.mp3",
+    "宿羽阳 - 暗恋是一个人的事.mp3",
+    "马良 - 往后余生 (Demo).mp3",
+    "郭旭 - 不找了.mp3",
+    "七水Lena - 我会等.mp3",
+    "水木年华 - 一生有你.mp3",
+    "告五人 - 唯一.mp3"
+];
+
+const audioPlayer = document.getElementById("audioPlayer");
+const songButtons = document.getElementById("songButtons");
+
+// 创建按钮
+songs.forEach((song, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = song.replace(".mp3", ""); // 显示歌名，不显示.mp3
+    btn.addEventListener("click", () => {
+        audioPlayer.src = `songs/${song}`; // 确保你把文件放到 /songs/ 文件夹
+        audioPlayer.play();
+    });
+    songButtons.appendChild(btn);
+});
+</script>
+</body>
+</html>
